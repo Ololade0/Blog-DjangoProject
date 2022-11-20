@@ -1,1 +1,1 @@
-# Django--E-Store-Project
+# Django--Blog-Project
