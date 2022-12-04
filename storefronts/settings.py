@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'playground',
     'store',
     'tags',
-    'debug_toolbar'
+    'debug_toolbar',
+    'rest_framework'
 ]
 
 INTERNAL_IPS = [
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'storefronts.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'storefront2',
+        'NAME': 'storefront',
         'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': 'asake'
@@ -133,3 +134,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING' : False
+}

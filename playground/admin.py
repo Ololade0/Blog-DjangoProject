@@ -8,6 +8,7 @@ from . import models
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'products_count']
+
     # OVERRIDING OF BASE QUERY WHEN ITS NOT INCLUDED ON THE OBJECT FIELD
     @admin.display(ordering='products')
     def products_count(self, collection):
@@ -25,8 +26,9 @@ class CollectionAdmin(admin.ModelAdmin):
             products_count=Count('product')
         )
 
-
     # TO CREATE CUSTOM FILTER
+
+
 class InventoryFilter(admin.SimpleListFilter):
     title = 'inventory'
     parameter_name = 'inventory'
@@ -39,7 +41,6 @@ class InventoryFilter(admin.SimpleListFilter):
     def queryset(self, request, queryset):
         if self.value() == '<10':
             return queryset.filter(inventory__lt=10)
-
 
 
 @admin.register(models.Product)
@@ -61,10 +62,8 @@ class ProductAdmin(admin.ModelAdmin):
             return 'Low'
         return 'OK'
 
-
     def collection_title(self, product):
-      return product.collection.title
-
+        return product.collection.title
 
     def clear_inventory(self, request, queryset):
         updated_count = queryset.update(inventory=0)
@@ -72,9 +71,6 @@ class ProductAdmin(admin.ModelAdmin):
             request, f'{updated_count} products were successfully updated',
             messages.ERROR
         )
-
-
-
 
 
 @admin.register(models.Customer)

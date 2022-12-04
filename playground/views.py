@@ -7,10 +7,10 @@ from playground.models import Product
 
 def say_hello(request):
     try:
-        query_set = Product.objects.count()
+        Product.objects.count()
         # retrieving object method
         # all method get all the object in a given table
-        queryset = Product.objects.all()
+        Product.objects.all()
         # to get a single method with id in a given table, get method will be use, it doesnt retun a query set
         product = Product.objects.get(pk=1)
     except ObjectDoesNotExist:
